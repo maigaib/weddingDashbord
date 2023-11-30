@@ -1,4 +1,6 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:weddingadministration/firebase_options.dart';
 import 'package:weddingadministration/responsive/desktop_body.dart';
 import 'package:weddingadministration/responsive/tablet_body.dart';
 
@@ -6,8 +8,13 @@ import 'responsive/mobile_body.dart';
 import 'responsive/responsive_layout.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
-void main() {
-  initializeDateFormatting('fr_FR');
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+ await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+);
+initializeDateFormatting('fr_FR');
   runApp(const MyApp());
 }
 

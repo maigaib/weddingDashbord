@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "44149612105",
+    "project_id": "wedding-yours",
+    "storage_bucket": "wedding-yours.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:44149612105:android:46217ed0244d3185b8a998",
+        "android_client_info": {
+          "package_name": "com.example.app_wedding_yours"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYgBCKN6HHgDE1v4niH1gDdSGNqcQ1IVE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:44149612105:android:61fd83245a52e69eb8a998",
+        "android_client_info": {
+          "package_name": "com.example.responsivedashboard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYgBCKN6HHgDE1v4niH1gDdSGNqcQ1IVE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

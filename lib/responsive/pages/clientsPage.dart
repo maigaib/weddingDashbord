@@ -2,22 +2,24 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:weddingadministration/modeles/prestataire.dart';
-import 'package:weddingadministration/services/prestataireServices.dart';
-import 'package:weddingadministration/util/titre_add_bouton.dart';
-import '../constants.dart';
-import '../util/my_box.dart';
+import 'package:weddingadministration/constants.dart';
+import 'package:weddingadministration/modeles/client.dart';
+import 'package:weddingadministration/services/clientService.dart';
+import 'package:weddingadministration/util/my_box.dart';
 
-class DesktopScaffold extends StatefulWidget {
+import 'package:weddingadministration/util/titre_add_bouton.dart';
+
+
+class ClientScaffold extends StatefulWidget {
   //final listContent;
-  const DesktopScaffold({Key? key,}) : super(key: key);
+  const ClientScaffold({Key? key,}) : super(key: key);
 
   @override
-  State<DesktopScaffold> createState() => _DesktopScaffoldState();
+  State<ClientScaffold> createState() => _ClientScaffoldState();
 }
 
-class _DesktopScaffoldState extends State<DesktopScaffold> {
-  StreamController<List<Prestataire>> _listePrestatairesController = StreamController<List<Prestataire>>.broadcast();
+class _ClientScaffoldState extends State<ClientScaffold> {
+  StreamController<List<Client>> _listeClientsController = StreamController<List<Client>>.broadcast();
   DateTime today = DateTime.now(); 
  void _onDaySelected(DateTime day, DateTime focusedDay){
   setState(() {
@@ -29,21 +31,21 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
     super.initState();
     // À ce stade, vous pouvez initialiser votre liste de prestataires
     // par exemple, en appelant une méthode qui récupère les données de votre service
-    _chargerListePrestataires();
+    _chargerListeClients();
   }
 
-  Future<void> _chargerListePrestataires() async {
+  Future<void> _chargerListeClients() async {
     // Chargez votre liste de prestataires à partir de votre service PrestataireService
-    PrestataireService prestataireService = PrestataireService();
-    List<Prestataire> prestataires = await prestataireService.getlistePrestataires();
+    ClientService clientService = ClientService();
+    List<Client> clients = await clientService.getlisteClients();
 
     // Émettez la liste dans le StreamController
-    _listePrestatairesController.add(prestataires);
+    _listeClientsController.add(clients);
   }
 
   @override
   void dispose() {
-    _listePrestatairesController.close();
+    _listeClientsController.close();
     super.dispose();
   }
 
@@ -117,7 +119,7 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
                            SizedBox(height: 10),
                          Padding(
                            padding: EdgeInsets.all(10.0),
-                           child: MyButton(   titre: 'P R E S T A T A I R E S',
+                           child: MyButton(   titre: 'C L I E N T S',
                                        icon: Icons.add,
                                        text: 'Ajouter',
                                        onPressed: () {
@@ -181,8 +183,8 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
 
                      
                   // list of previous days
-                  StreamBuilder<List<Prestataire>>(
-  stream: _listePrestatairesController.stream,
+                  StreamBuilder<List<Client>>(
+  stream: _listeClientsController.stream,
   builder: (context, snapshot) {
     if (snapshot.connectionState == ConnectionState.waiting) {
       return CircularProgressIndicator();
@@ -194,13 +196,13 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
     }
 
     // Utilisez les données du snapshot
-    List<Prestataire> listes = snapshot.data as List<Prestataire>;
+    List<Client> listes = snapshot.data as List<Client>;
 
     return Expanded(
       child: ListView.builder(
         itemCount: listes.length,
         itemBuilder: (context, index) {
-          Prestataire prestataire = listes[index];
+          Client client = listes[index];
             int lineNumber = index + 1;
           return Padding(
             padding: const EdgeInsets.all(4.0),
@@ -223,19 +225,19 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
 
                     // Name widget
                     Text(
-                      prestataire.nom,
+                      client.nom ,
                       style: const TextStyle(fontSize: 16),
                     ),
                     const SizedBox(width: 80),
 
                     // Email widget
                     Text(
-                      prestataire.email,
+                      client.email,
                       style: const TextStyle(fontSize: 16),
                     ),
                     const SizedBox(width: 80),
                     Text(
-                      prestataire.tel,
+                      client.telephone,
                       style: const TextStyle(fontSize: 16),
                     ),
                     const SizedBox(width: 80),
@@ -305,13 +307,21 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          //color: Colors.red[20],
-                        ),
-                        child: Image.asset("assets/images/LogoV.png"),
-                      ),
+                      child: Card(
+                          elevation: 4,
+                          color: Colors.white, // L'élévation de la carte
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8), // Les coins arrondis de la carte
+                          ),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              //color: Colors.,
+                            ),
+                            child: Image.asset("assets/images/LogoV.png"),
+                          ),
+                        )
+
                     ),
                   ),
                 ],

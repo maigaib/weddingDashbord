@@ -17,7 +17,7 @@ class _TabletScaffoldState extends State<TabletScaffold> {
     return Scaffold(
       backgroundColor: defaultBackgroundColor,
       appBar: myAppBar,
-      drawer: myDrawer,
+      drawer: myDrawer(context),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(

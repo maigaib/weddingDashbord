@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:weddingadministration/modeles/prestataire.dart';
+import 'package:weddingadministration/responsive/desktop_body.dart';
+import 'package:weddingadministration/responsive/pages/clientsPage.dart';
+import 'package:weddingadministration/responsive/pages/mariagesPage.dart';
+
 
 var defaultBackgroundColor = Colors.white;
 var appBarColor = Color.fromRGBO(253, 139, 139, 1);
@@ -11,7 +16,8 @@ var drawerTextColor = TextStyle(
   color: Colors.grey[600],
 );
 var tilePadding = const EdgeInsets.only(left: 8.0, right: 8, top: 8);
-var myDrawer = Drawer(
+//================================================ttouched=====================================================================================
+var myDrawer  = (BuildContext context)=>  Drawer(
   backgroundColor: Colors.grey[300],
   elevation: 0,
   child: Column(
@@ -43,6 +49,12 @@ var myDrawer = Drawer(
             'P R E S T A T A I R E S',
             style: drawerTextColor,
           ),
+           onTap: () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => DesktopScaffold()),
+      );
+    },
         ),
       ),
       Padding(
@@ -63,6 +75,12 @@ var myDrawer = Drawer(
             'C L I E N T S',
             style: drawerTextColor,
           ),
+          onTap: () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => ClientScaffold()),
+      );
+    },
         ),
       ),
       Padding(
@@ -83,6 +101,12 @@ var myDrawer = Drawer(
             'M A R I A G E S',
             style: drawerTextColor,
           ),
+          onTap: () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => MariageScaffold()),
+      );
+    },
         ),
       ),
       Padding(
@@ -90,7 +114,7 @@ var myDrawer = Drawer(
         child: ListTile(
           leading: Icon(Icons.settings),
           title: Text(
-            'S E T T I N G S',
+            'P A R A M E T R E S',
             style: drawerTextColor,
           ),
         ),
@@ -100,7 +124,7 @@ var myDrawer = Drawer(
         child: ListTile(
           leading: Icon(Icons.info),
           title: Text(
-            'A B O U T',
+            'A  P R O P O S',
             style: drawerTextColor,
           ),
         ),
@@ -110,7 +134,7 @@ var myDrawer = Drawer(
         child: ListTile(
           leading: Icon(Icons.logout),
           title: Text(
-            'L O G O U T',
+            'D E C O N N E X I O N',
             style: drawerTextColor,
           ),
         ),
