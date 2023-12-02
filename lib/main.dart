@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:weddingadministration/connexion.dart';
 import 'package:weddingadministration/firebase_options.dart';
 import 'package:weddingadministration/responsive/desktop_body.dart';
 import 'package:weddingadministration/responsive/tablet_body.dart';
@@ -26,11 +27,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.green),
-      home: ResponsiveLayout(
+      home: ConnexionPage(),
+      routes: {
+      '/dashboard': (context) =>  ResponsiveLayout(
         mobileBody: const MobileScaffold(),
         tabletBody: const TabletScaffold(),
         desktopBody: const DesktopScaffold(),
       ),
+    },
+     
     );
   }
 }

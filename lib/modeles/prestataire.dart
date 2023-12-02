@@ -1,6 +1,5 @@
 // Table prestataires
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 class Prestataire {
   String? prestataireId;
   String nom;
