@@ -254,53 +254,80 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
                            SizedBox(height: 10),
 
                          Container(
-                           decoration: BoxDecoration(
-                              border: Border(
-                                bottom: BorderSide(
-                                  color: Colors.black,  // Couleur de la bordure
-                                  width: 1.0,           // Largeur de la bordure
+                        decoration: const BoxDecoration(
+                          border: Border(
+                            bottom: BorderSide(
+                              color: Colors.black,
+                              width: 1.0,
+                            ),
+                          ),
+                        ),
+                        child: Row(
+                          children: [
+                            SizedBox(width: 20),
+                            Container(
+                              width: 30,
+                              child: const Center(
+                                child: Text(
+                                  'N°',
+                                  style: TextStyle(
+                                      fontSize: 16, fontWeight: FontWeight.bold),
                                 ),
                               ),
                             ),
-                           child: const Row(
-                                           children: [
-                                             SizedBox(width: 50),
-                                             // ID widget
-                                             Text(
-                                               'N°',
-                                               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                                             ),
-                                             SizedBox(width: 60),
-                                             // Name widget
-                                             Text(
-                                               'Nom',
-                                               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                                             ),
-                                             SizedBox(width: 100),
-                                             // Email widget
-                                             Text(
-                                               'Email',
-                                               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                                             ),
-                                             SizedBox(width: 130),
-                                             // Téléphone widget
-                                             Text(
-                                               'Téléphone',
-                                               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                                             ),
-                                             SizedBox(width: 100),
-                                             // Actions widget (e.g., buttons)
-                                             Row(
-                                               children: [
-                                                 SizedBox(width: 50),
-                                                 Text(
-                                                   'Actions',
-                                                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                                                 ),
-                                               ],
-                                             ),
-                                           ],),
-                         )
+                            //SizedBox(width: 10),
+                            Container(
+                              width: 200,
+                              child: const Center(
+                                child: Text(
+                                  'Nom',
+                                  style: TextStyle(
+                                      fontSize: 16, fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                            //const SizedBox(width: 100),
+                            Container(
+                              width: 160,
+                              child: const Center(
+                                child: Text(
+                                  'Email',
+                                  style: TextStyle(
+                                      fontSize: 16, fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                            //SizedBox(width: 130),
+                            Container(
+                              width: 160,
+                              child: const Center(
+                                child: Text(
+                                  'Telephone',
+                                  style: TextStyle(
+                                      fontSize: 16, fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                            SizedBox(width: 30),
+                            Container(
+                              width: 140,
+                              child: const Row(
+                                children: [
+                                  SizedBox(width: 50),
+                                  Center(
+                                    child: Text(
+                                      'Actions',
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
                        ],
                      ),
 
@@ -338,89 +365,104 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
               child: Center(
                 child: Row(
                   children: [
-                    const SizedBox(width: 50),
+                    const SizedBox(width: 20),
                     // ID widget
-                    Text(
-                      lineNumber.toString(),
-                      style: const TextStyle(fontSize: 16),
+                    Container(
+                      width:30,
+                      child: Text(
+                        lineNumber.toString(),
+                        style: const TextStyle(fontSize: 16),
+                      ),
                     ),
-                    const SizedBox(width: 60),
+                    const SizedBox(width: 10),
 
                     // Name widget
-                    Text(
-                      prestataire.nom,
-                      style: const TextStyle(fontSize: 16),
+                    Container(
+                      width: 200,
+                      child: Text(
+                        prestataire.nom,
+                        style: const TextStyle(fontSize: 16),
+                      ),
                     ),
-                    const SizedBox(width: 80),
+                    const SizedBox(width: 10),
 
                     // Email widget
-                    Text(
-                      prestataire.email,
-                      style: const TextStyle(fontSize: 16),
+                    Container(
+                      width: 160,
+                      child: Text(
+                        prestataire.email,
+                        style: const TextStyle(fontSize: 16),
+                      ),
                     ),
-                    const SizedBox(width: 80),
-                    Text(
-                      prestataire.tel,
-                      style: const TextStyle(fontSize: 16),
+                    const SizedBox(width: 30),
+                    Container(
+                      width: 140,
+                      child: Text(
+                        prestataire.tel,
+                        style: const TextStyle(fontSize: 16),
+                      ),
                     ),
-                    const SizedBox(width: 80),
+                    const SizedBox(width: 20),
 
                     // Actions widget (e.g., buttons)
-                    Row(
-                      children: [
-                        // Edit button
-                        IconButton(
-                          onPressed: () {
-                            showDialog(
-                                          context: context,
-                                          builder: (context) => ModifierPrestataire(prestataire : prestataire),
-                                        );
-                          },
-                          icon: const Icon(Icons.edit, color: Colors.blue,),
+                    Container(
+                      width: 170,
+                      child: Row(
+                        children: [
+                          // Edit button
+                          IconButton(
+                            onPressed: () {
+                              showDialog(
+                                            context: context,
+                                            builder: (context) => ModifierPrestataire(prestataire : prestataire),
+                                          );
+                            },
+                            icon: const Icon(Icons.edit, color: Colors.blue,),
+                          ),
+                          const SizedBox(width: 10),
+                          // Delete button
+                          IconButton(
+                            onPressed: () {
+                      
+                              showDialog<void>(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text('Confirmation'),
+                                content: Text('Voulez-vous vraiment supprimer cet élément ?'),
+                                actions: <Widget>[
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop(); // Ferme la boîte de dialogue
+                                    },
+                                    child: Text('Non'),
+                                  ),
+                                  TextButton(
+                                    onPressed: () async {
+                                      await prestataireService.delete(prestataire.prestataireId??'');
+                                      await     _chargerListePrestataires(); // Mise à jour de la liste
+                                      Navigator.of(context).pop(); // Ferme la boîte de dialogue après la suppression
+                                    },
+                                    child: Text('Oui', 
+                                        style: TextStyle(
+                          color: Colors.red,
                         ),
-                        const SizedBox(width: 20),
-                        // Delete button
-                        IconButton(
-                          onPressed: () {
-
-                            showDialog<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Confirmation'),
-          content: Text('Voulez-vous vraiment supprimer cet élément ?'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(); // Ferme la boîte de dialogue
-              },
-              child: Text('Non'),
-            ),
-            TextButton(
-              onPressed: () async {
-                await prestataireService.delete(prestataire.prestataireId??'');
-                await     _chargerListePrestataires(); // Mise à jour de la liste
-                Navigator.of(context).pop(); // Ferme la boîte de dialogue après la suppression
-              },
-              child: Text('Oui', 
-                  style: TextStyle(
-                        color: Colors.red,
+                                        ),
+                                  ),
+                                ],
+                              );
+                                      },
+                                    );
+                            },
+                            icon: const Icon(Icons.delete, color: Colors.red,),
+                          ),
+                          const SizedBox(width: 10),
+                          IconButton(
+                            onPressed: () {},
+                            icon: const Icon(Icons.info_outline, color: Colors.purple,),
+                          ),
+                        ],
                       ),
-                  ),
-            ),
-          ],
-        );
-                },
-              );
-                          },
-                          icon: const Icon(Icons.delete, color: Colors.red,),
-                        ),
-                        const SizedBox(width: 20),
-                        IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.info_outline, color: Colors.purple,),
-                        ),
-                      ],
                     ),
                   ],
                 ),
